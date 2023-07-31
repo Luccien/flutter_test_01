@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'package:share_plus/share_plus.dart';
+
 
 void main() {
   //runApp(MaterialApp(home: Text('hello worldf'),));
   runApp(MyApp());
+}
+void shareContent(String text) {
+  Share.share(text); // Share the provided text using the platform's share dialog
 }
 
 class MyApp extends StatelessWidget {
@@ -14,13 +18,31 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: ShareButtonExample(),
     );
   }
 }
 
 
-
+class ShareButtonExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Share Button Example'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Replace 'Your text to share' with the content you want to share
+            shareContent('Your text to share');
+          },
+          child: Text('Share'),
+        ),
+      ),
+    );
+  }
+}
 
 
 

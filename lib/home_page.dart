@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
 import 'alligator_model.dart';
 
+
+
+
+
+
+
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({required Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -25,14 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
-  share(BuildContext context, Alligator alligator) {
-    final RenderBox box = context.findRenderObject();
-
-    Share.share("${alligator.name} - ${alligator.description}",
-        subject: alligator.description,
-        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ListTile(
                   title: Text(alligator.name),
                   subtitle: Text(alligator.description),
-                  onTap: () => share(context, alligator),
                 ),
               ],
             ),
